@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import getTeam from '../api/data/teamData';
 import Navigation from '../components/Navigation';
-import Team from '../components/Team';
+import Routes from '../routes';
 
 function Initialize() {
   const [players, setPlayers] = useState([]);
@@ -12,7 +12,7 @@ function Initialize() {
   return (
     <div className="App">
       <Navigation />
-      <Team players={players} setPlayers={setPlayers} />
+      <Routes players={players} setPlayers={setPlayers} />
     </div>
   );
 }
