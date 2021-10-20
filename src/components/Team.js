@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function Team({ player }) {
   return (
-    <div>
+    <div className="container d-flex justify-content-center">
       <p>{player.name}</p>
     </div>
   );

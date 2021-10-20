@@ -1,22 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Team from '../components/Team';
 
-export default function Home({ players, setPlayers }) {
+export default function Home() {
   return (
-    <div>
-      {players.map((player) => (
-        <Team
-          key={player.firebaseKey}
-          player={player}
-          setPlayers={setPlayers}
-        />
-      ))}
+    <div className=" container text-center">
+      <h1>Welcome to the Team Roster React App!</h1>
+      <p>Use the navigation buttons above to access routes!</p>
     </div>
   );
 }
-
-Home.propTypes = {
-  players: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setPlayers: PropTypes.func.isRequired,
-};
