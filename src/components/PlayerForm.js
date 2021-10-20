@@ -32,7 +32,7 @@ export default function PlayerForm({ setPlayers }) {
   };
 
   return (
-    <div className="text-center">
+    <div className="container d-flex justify-content-center">
       <form id="playerForm" className="mb-3 d-flex align-items-center">
         <label htmlFor="name" className="me-1">
           <input
