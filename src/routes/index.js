@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Home from '../views/Home';
+import PlayerForm from '../components/PlayerForm';
 
 export default function Routes({ players, setPlayers }) {
   return (
@@ -12,6 +13,7 @@ export default function Routes({ players, setPlayers }) {
           path="/"
           component={() => <Home players={players} setPlayers={setPlayers} />}
         />
+        <Route exact path="/new" component={() => <PlayerForm />} />
       </Switch>
     </div>
   );
