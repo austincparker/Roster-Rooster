@@ -4,14 +4,17 @@ import Team from '../components/Team';
 
 export default function Home({ players, setPlayers }) {
   return (
-    <div>
-      {players.map((player) => (
-        <Team
-          key={player.firebaseKey}
-          player={player}
-          setPlayers={setPlayers}
-        />
-      ))}
+    <div className=" container text-center">
+      <h1>Team</h1>
+      <div>
+        {players.map((player) => (
+          <Team
+            key={player.firebaseKey}
+            player={player}
+            setPlayers={setPlayers}
+          />
+        ))}
+      </div>
     </div>
   );
 }

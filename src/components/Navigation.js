@@ -8,7 +8,7 @@ export default function Navigation() {
     <div>
       <button
         type="button"
-        onClick={() => history.push('/')}
+        onClick={() => history.push('/team')}
         className="btn btn-light border border-dark"
       >
         Team
