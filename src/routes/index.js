@@ -13,7 +13,11 @@ export default function Routes({ players, setPlayers }) {
           path="/"
           component={() => <Home players={players} setPlayers={setPlayers} />}
         />
-        <Route exact path="/new" component={() => <PlayerForm />} />
+        <Route
+          exact
+          path="/new"
+          component={() => <PlayerForm setPlayers={setPlayers} />}
+        />
       </Switch>
     </div>
   );

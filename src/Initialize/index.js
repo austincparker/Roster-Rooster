@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import getTeam from '../api/data/teamData';
+import { getTeam } from '../api/data/teamData';
 import Navigation from '../components/Navigation';
 import Routes from '../routes';
 
