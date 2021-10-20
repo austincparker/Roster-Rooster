@@ -1,37 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import getTeam from '../api/data/teamData';
+import Navigation from '../components/Navigation';
+import Routes from '../routes';
 
 function Initialize() {
-  const [domWriting, setDomWriting] = useState('Nothing Here!');
+  const [players, setPlayers] = useState([]);
 
-  const handleClick = (e) => {
-    console.warn(`You clicked ${e.target.id}`);
-    setDomWriting(`You clicked ${e.target.id}! Check the Console!`);
-  };
-
+  useEffect(() => {
+    getTeam().then(setPlayers);
+  }, []);
   return (
     <div className="App">
-      <h2>INSIDE APP COMPONENT</h2>
-      <div>
-        <button
-          type="button"
-          id="this-button"
-          className="btn btn-info"
-          onClick={handleClick}
-        >
-          I am THIS button
-        </button>
-      </div>
-      <div>
-        <button
-          type="button"
-          id="that-button"
-          className="btn btn-primary mt-3"
-          onClick={handleClick}
-        >
-          I am THAT button
-        </button>
-      </div>
-      <h3>{domWriting}</h3>
+      <Navigation />
+      <Routes players={players} setPlayers={setPlayers} />
     </div>
   );
 }

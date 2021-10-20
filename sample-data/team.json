@@ -1,0 +1,28 @@
+{
+    "team": {
+        "player1": {
+            "imageUrl": "http://www.image.com/image.jpg",
+            "name": "Steve",
+            "position": "Pitcher",
+            "uid": "55498jfsdklj2"
+        },
+        "player2": {
+            "imageUrl": "http://www.image.com/image.jpg",
+            "name": "Steve",
+            "position": "Pitcher",
+            "uid": "55498jfsdklj2"
+        },
+        "player3": {
+            "imageUrl": "http://www.image.com/image.jpg",
+            "name": "Steve",
+            "position": "Pitcher",
+            "uid": "55498jfsdklj2"
+        },
+        "player4": {
+            "imageUrl": "http://www.image.com/image.jpg",
+            "name": "Steve",
+            "position": "Pitcher",
+            "uid": "55498jfsdklj2"
+        }
+    }
+}
