@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const PlayerCard = styled.div`
+  margin-bottom: 20px;
   img {
     width: 300px;
     margin: auto;
@@ -22,10 +23,7 @@ export default function Team({ player }) {
         />
         <div className="card-body">
           <h5 className="card-title">{player.name}</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the cards content.
-          </p>
+          <p className="card-text">{player.position}</p>
         </div>
       </PlayerCard>
     </Container>
@@ -36,6 +34,7 @@ Team.propTypes = {
   player: PropTypes.shape({
     name: PropTypes.string,
     imageUrl: PropTypes.string,
+    position: PropTypes.string,
   }).isRequired,
   //   setPlayers: PropTypes.func.isRequired,
 };

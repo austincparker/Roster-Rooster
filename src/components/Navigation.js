@@ -8,7 +8,7 @@ export default function Navigation() {
   const history = useHistory();
 
   return (
-    <Container className="d-flex justify-content-center">
+    <Container className="d-flex justify-content-center my-3">
       <button
         type="button"
         onClick={() => history.push('/team')}
