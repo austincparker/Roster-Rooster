@@ -1,10 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Team from '../components/Team';
+
+const Container = styled.div`
+  background-color: white;
+  h1 {
+    margin-bottom: 30px;
+  }
+`;
 
 export default function TeamView({ players, setPlayers }) {
   return (
-    <div className=" container text-center">
+    <Container className=" container text-center">
       <h1>Team</h1>
       <div>
         {players.map((player) => (
@@ -15,7 +23,7 @@ export default function TeamView({ players, setPlayers }) {
           />
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
 

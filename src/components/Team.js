@@ -5,6 +5,8 @@ import { Button } from 'reactstrap';
 import { deletePlayer } from '../api/data/teamData';
 
 const PlayerCard = styled.div`
+  background-color: teal;
+  color: white;
   margin-bottom: 20px;
   img {
     width: 300px;
@@ -21,7 +23,7 @@ export default function Team({ player, setPlayers }) {
     }
   };
   return (
-    <Container className="d-flex justify-content-center">
+    <Container className="d-flex flex-wrap justify-content-center">
       <PlayerCard className="d-flex justify-content-center card">
         <img
           src={player.imageUrl}

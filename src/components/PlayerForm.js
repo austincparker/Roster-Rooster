@@ -13,6 +13,7 @@ const initialState = {
 const Container = styled.div``;
 
 const FormStyle = styled.div`
+  padding: 30px 0 50px 0;
   input {
     margin-bottom: 10px;
   }
