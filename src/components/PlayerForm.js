@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import { createPlayer } from '../api/data/teamData';
 
 const initialState = {
@@ -8,8 +10,17 @@ const initialState = {
   position: '',
 };
 
+const Container = styled.div``;
+
+const FormStyle = styled.div`
+  input {
+    margin-bottom: 10px;
+  }
+`;
+
 export default function PlayerForm({ setPlayers }) {
   const [formInput, setFormInput] = useState(initialState);
+  const history = useHistory();
 
   const resetForm = () => {
     setFormInput({ ...initialState });
@@ -29,22 +40,51 @@ export default function PlayerForm({ setPlayers }) {
       setPlayers(players);
     });
     resetForm();
+    history.push('/team');
   };
 
   return (
-    <div className="container d-flex justify-content-center">
-      <form id="playerForm" className="mb-3 d-flex align-items-center">
-        <label htmlFor="name" className="me-1">
-          <input
-            name="name"
-            id="name"
-            value={formInput.name}
-            onChange={handleChange}
-            required
-            className="form-control"
-            placeholder="ADD A PLAYER"
-          />
-        </label>
+    <Container>
+      <FormStyle id="playerForm">
+        <div>
+          <label htmlFor="name">
+            <input
+              name="name"
+              id="name"
+              value={formInput.name}
+              onChange={handleChange}
+              required
+              className="form-control"
+              placeholder="ADD A PLAYER"
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="imageUrl">
+            <input
+              name="imageUrl"
+              id="imageUrl"
+              value={formInput.imageUrl}
+              onChange={handleChange}
+              required
+              className="form-control"
+              placeholder="ADD AN IMAGE URL"
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="position">
+            <input
+              name="position"
+              id="position"
+              value={formInput.position}
+              onChange={handleChange}
+              required
+              className="form-control"
+              placeholder="ADD A POSITION"
+            />
+          </label>
+        </div>
         <button
           type="submit"
           className="btn btn-success"
@@ -52,8 +92,8 @@ export default function PlayerForm({ setPlayers }) {
         >
           Submit
         </button>
-      </form>
-    </div>
+      </FormStyle>
+    </Container>
   );
 }
 
