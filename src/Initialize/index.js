@@ -5,6 +5,7 @@ import Routes from '../routes';
 
 function Initialize() {
   const [players, setPlayers] = useState([]);
+  const [editItem, setEditItem] = useState({});
 
   useEffect(() => {
     getTeam().then(setPlayers);
@@ -12,7 +13,12 @@ function Initialize() {
   return (
     <div className="App">
       <Navigation />
-      <Routes players={players} setPlayers={setPlayers} />
+      <Routes
+        players={players}
+        setPlayers={setPlayers}
+        setEditItem={setEditItem}
+        obj={editItem}
+      />
     </div>
   );
 }

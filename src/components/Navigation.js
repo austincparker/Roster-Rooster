@@ -2,13 +2,15 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Container = styled.div``;
+const Container = styled.div`
+  background-color: white;
+`;
 
 export default function Navigation() {
   const history = useHistory();
 
   return (
-    <Container className="d-flex justify-content-center my-3">
+    <Container className="container d-flex justify-content-center py-3">
       <button
         type="button"
         onClick={() => history.push('/team')}
