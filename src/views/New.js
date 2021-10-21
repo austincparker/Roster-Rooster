@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 // eslint-disable-next-line react/prop-types
-export default function New({ setPlayers }) {
+export default function New({ setPlayers, obj, setEditItem }) {
   const [formInput, setFormInput] = useState(initialState);
 
   return (
@@ -24,11 +24,19 @@ export default function New({ setPlayers }) {
         setFormInput={setFormInput}
         setPlayers={setPlayers}
         formInput={formInput}
+        obj={obj}
+        setEditItem={setEditItem}
       />
     </Container>
   );
 }
 
 New.propTypes = {
+  obj: PropTypes.shape({
+    name: PropTypes.string,
+    imageUrl: PropTypes.string,
+    position: PropTypes.string,
+  }).isRequired,
+  setEditItem: PropTypes.func.isRequired,
   setPlayers: PropTypes.func.isRequired,
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import { deletePlayer } from '../api/data/teamData';
 
@@ -16,10 +17,14 @@ const PlayerCard = styled.div`
 
 const Container = styled.div``;
 
-export default function Team({ player, setPlayers }) {
+export default function Team({ player, setPlayers, setEditItem }) {
+  const history = useHistory();
   const handleClick = (method) => {
     if (method === 'delete') {
       deletePlayer(player.firebaseKey).then(setPlayers);
+    } else if (method === 'edit') {
+      setEditItem(player);
+      history.push('/new');
     }
   };
   return (
@@ -33,6 +38,9 @@ export default function Team({ player, setPlayers }) {
         <div className="card-body">
           <h5 className="card-title">{player.name}</h5>
           <p className="card-text">{player.position}</p>
+          <Button color="info" onClick={() => handleClick('edit')}>
+            EDIT
+          </Button>
           <Button color="danger" onClick={() => handleClick('delete')}>
             DELETE
           </Button>
@@ -50,4 +58,5 @@ Team.propTypes = {
     firebaseKey: PropTypes.string,
   }).isRequired,
   setPlayers: PropTypes.func.isRequired,
+  setEditItem: PropTypes.func.isRequired,
 };

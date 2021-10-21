@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-import { createPlayer } from '../api/data/teamData';
+import { createPlayer, updatePlayer } from '../api/data/teamData';
 
 const initialState = {
   name: '',
@@ -19,12 +19,24 @@ const FormStyle = styled.div`
   }
 `;
 
-export default function PlayerForm({ setPlayers }) {
+export default function PlayerForm({ obj, setPlayers, setEditItem }) {
   const [formInput, setFormInput] = useState(initialState);
   const history = useHistory();
 
+  useEffect(() => {
+    if (obj.firebaseKey) {
+      setFormInput({
+        name: obj.name,
+        imageUrl: obj.imageUrl,
+        position: obj.position,
+        firebaseKey: obj.firebaseKey,
+      });
+    }
+  }, [obj]);
+
   const resetForm = () => {
     setFormInput({ ...initialState });
+    setEditItem({});
   };
 
   const handleChange = (e) => {
@@ -36,12 +48,19 @@ export default function PlayerForm({ setPlayers }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn('add a player');
-    createPlayer({ ...formInput }).then((players) => {
-      setPlayers(players);
-    });
-    resetForm();
-    history.push('/team');
+    if (obj.firebaseKey) {
+      updatePlayer(formInput.firebaseKey, formInput).then((players) => {
+        setPlayers(players);
+        resetForm();
+        history.push('/team');
+      });
+    } else {
+      createPlayer({ ...formInput }).then((players) => {
+        setPlayers(players);
+      });
+      resetForm();
+      history.push('/team');
+    }
   };
 
   return (
@@ -99,5 +118,12 @@ export default function PlayerForm({ setPlayers }) {
 }
 
 PlayerForm.propTypes = {
+  obj: PropTypes.shape({
+    name: PropTypes.string,
+    imageUrl: PropTypes.string,
+    position: PropTypes.string,
+    firebaseKey: PropTypes.string,
+  }).isRequired,
   setPlayers: PropTypes.func.isRequired,
+  setEditItem: PropTypes.func.isRequired,
 };

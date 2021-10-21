@@ -10,7 +10,7 @@ const Container = styled.div`
   }
 `;
 
-export default function TeamView({ players, setPlayers }) {
+export default function TeamView({ players, setPlayers, setEditItem }) {
   return (
     <Container className=" container text-center">
       <h1>Team</h1>
@@ -20,6 +20,7 @@ export default function TeamView({ players, setPlayers }) {
             key={player.firebaseKey}
             player={player}
             setPlayers={setPlayers}
+            setEditItem={setEditItem}
           />
         ))}
       </div>
@@ -29,5 +30,6 @@ export default function TeamView({ players, setPlayers }) {
 
 TeamView.propTypes = {
   players: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setEditItem: PropTypes.func.isRequired,
   setPlayers: PropTypes.func.isRequired,
 };

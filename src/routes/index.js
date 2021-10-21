@@ -5,7 +5,9 @@ import Home from '../views/Home';
 import New from '../views/New';
 import TeamView from '../views/TeamView';
 
-export default function Routes({ players, setPlayers }) {
+export default function Routes({
+  players, setPlayers, setEditItem, obj,
+}) {
   return (
     <div>
       <Switch>
@@ -14,13 +16,19 @@ export default function Routes({ players, setPlayers }) {
           exact
           path="/team"
           component={() => (
-            <TeamView players={players} setPlayers={setPlayers} />
+            <TeamView
+              players={players}
+              setPlayers={setPlayers}
+              setEditItem={setEditItem}
+            />
           )}
         />
         <Route
           exact
           path="/new"
-          component={() => <New setPlayers={setPlayers} />}
+          component={() => (
+            <New setPlayers={setPlayers} setEditItem={setEditItem} obj={obj} />
+          )}
         />
       </Switch>
     </div>
@@ -30,4 +38,11 @@ export default function Routes({ players, setPlayers }) {
 Routes.propTypes = {
   players: PropTypes.arrayOf(PropTypes.object).isRequired,
   setPlayers: PropTypes.func.isRequired,
+  setEditItem: PropTypes.func.isRequired,
+  obj: PropTypes.shape({
+    name: PropTypes.string,
+    imageUrl: PropTypes.string,
+    position: PropTypes.string,
+    firebaseKey: PropTypes.string,
+  }).isRequired,
 };
