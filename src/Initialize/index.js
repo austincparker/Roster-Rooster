@@ -21,7 +21,7 @@ function Initialize() {
           user: authed.email.split('@')[0],
         };
         setUser(userInfoObj);
-        getTeam().then(setPlayers);
+        getTeam(userInfoObj.uid).then(setPlayers);
       } else if (user || user === null) {
         setUser(false);
       }
@@ -41,7 +41,7 @@ function Initialize() {
           />
         </>
       ) : (
-        <SignIn />
+        <SignIn user={user} />
       )}
     </div>
   );
