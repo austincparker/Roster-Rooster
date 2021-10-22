@@ -41,7 +41,7 @@ function Initialize() {
           />
         </>
       ) : (
-        <SignIn />
+        <SignIn user={user} />
       )}
     </div>
   );
