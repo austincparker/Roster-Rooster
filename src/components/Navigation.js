@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { signOutUser } from '../api/auth';
 
 const Container = styled.div`
   background-color: white;
@@ -24,6 +25,13 @@ export default function Navigation() {
         className="btn btn-light border border-dark"
       >
         New
+      </button>
+      <button
+        onClick={signOutUser}
+        type="button"
+        className="btn btn-danger border border-dark"
+      >
+        Log Out
       </button>
     </Container>
   );
