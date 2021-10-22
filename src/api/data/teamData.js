@@ -3,9 +3,9 @@ import firebaseConfig from '../apiKeys';
 
 const baseURL = firebaseConfig.databaseURL;
 
-const getTeam = () => new Promise((resolve, reject) => {
+const getTeam = (userId) => new Promise((resolve, reject) => {
   axios
-    .get(`${baseURL}/team.json`)
+    .get(`${baseURL}/team.json?orderBy="uid"&equalTo="${userId}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch(reject);
 });
