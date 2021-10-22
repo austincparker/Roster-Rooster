@@ -8,6 +8,7 @@ const initialState = {
   name: '',
   imageUrl: '',
   position: '',
+  uid: '',
 };
 
 const Container = styled.div``;
@@ -19,7 +20,9 @@ const FormStyle = styled.div`
   }
 `;
 
-export default function PlayerForm({ obj, setPlayers, setEditItem }) {
+export default function PlayerForm({
+  obj, setPlayers, setEditItem, uid,
+}) {
   const [formInput, setFormInput] = useState(initialState);
   const history = useHistory();
 
@@ -30,6 +33,7 @@ export default function PlayerForm({ obj, setPlayers, setEditItem }) {
         imageUrl: obj.imageUrl,
         position: obj.position,
         firebaseKey: obj.firebaseKey,
+        uid,
       });
     }
   }, [obj]);
@@ -55,7 +59,7 @@ export default function PlayerForm({ obj, setPlayers, setEditItem }) {
         history.push('/team');
       });
     } else {
-      createPlayer({ ...formInput }).then((players) => {
+      createPlayer({ ...formInput }, uid).then((players) => {
         setPlayers(players);
       });
       resetForm();
@@ -123,7 +127,9 @@ PlayerForm.propTypes = {
     imageUrl: PropTypes.string,
     position: PropTypes.string,
     firebaseKey: PropTypes.string,
+    uid: PropTypes.string,
   }).isRequired,
+  uid: PropTypes.string.isRequired,
   setPlayers: PropTypes.func.isRequired,
   setEditItem: PropTypes.func.isRequired,
 };

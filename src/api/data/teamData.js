@@ -10,7 +10,7 @@ const getTeam = (userId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createPlayer = (obj) => new Promise((resolve, reject) => {
+const createPlayer = (obj, userId) => new Promise((resolve, reject) => {
   axios
     .post(`${baseURL}/team.json`, obj)
     .then((response) => {
@@ -18,7 +18,7 @@ const createPlayer = (obj) => new Promise((resolve, reject) => {
       axios
         .patch(`${baseURL}/team/${firebaseKey}.json`, { firebaseKey })
         .then(() => {
-          getTeam().then(resolve);
+          getTeam(userId).then(resolve);
         });
     })
     .catch(reject);
