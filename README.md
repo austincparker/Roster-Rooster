@@ -4,10 +4,6 @@
 
 Deployed App: https://team-roster-react.netlify.app/
 
-## ERD
-
-<img width="291" alt="137314750-ec4b65c5-e139-4b1a-8fa5-6d25aa57afb7" src="https://user-images.githubusercontent.com/70224936/138563755-2104bc43-96de-4d9a-adc0-97475f1dfd4a.png">
-
 ## Features
 
 ### Authentication
