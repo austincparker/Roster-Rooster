@@ -17,11 +17,13 @@ const PlayerCard = styled.div`
 
 const Container = styled.div``;
 
-export default function Team({ player, setPlayers, setEditItem }) {
+export default function Team({
+  player, setPlayers, setEditItem, uid,
+}) {
   const history = useHistory();
   const handleClick = (method) => {
     if (method === 'delete') {
-      deletePlayer(player.firebaseKey).then(setPlayers);
+      deletePlayer(player.firebaseKey, uid).then(setPlayers);
     } else if (method === 'edit') {
       setEditItem(player);
       history.push('/new');
@@ -59,4 +61,5 @@ Team.propTypes = {
   }).isRequired,
   setPlayers: PropTypes.func.isRequired,
   setEditItem: PropTypes.func.isRequired,
+  uid: PropTypes.string.isRequired,
 };

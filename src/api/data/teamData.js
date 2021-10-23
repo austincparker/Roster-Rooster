@@ -24,10 +24,10 @@ const createPlayer = (obj, userId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deletePlayer = (firebaseKey) => new Promise((resolve, reject) => {
+const deletePlayer = (firebaseKey, uid) => new Promise((resolve, reject) => {
   axios
     .delete(`${baseURL}/team/${firebaseKey}.json`)
-    .then(() => getTeam().then(resolve))
+    .then(() => getTeam(uid).then(resolve))
     .catch(reject);
 });
 
