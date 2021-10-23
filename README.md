@@ -43,4 +43,4 @@ Deployed App: https://team-roster-react.netlify.app/
 - When user clicks 'delete' button, that player is removed from firebase and the 'team view' updates.
 
 ## Contributors
-Austin Parker [see GitHub](https://www.github.com/austincparker)
+**Austin Parker** ([see GitHub](https://www.github.com/austincparker))
