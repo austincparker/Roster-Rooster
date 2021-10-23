@@ -20,6 +20,7 @@ export default function Routes({
               players={players}
               setPlayers={setPlayers}
               setEditItem={setEditItem}
+              uid={uid}
             />
           )}
         />
