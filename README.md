@@ -41,3 +41,6 @@ Deployed App: https://team-roster-react.netlify.app/
 
 - Authenticated user can see a 'delete' button on each player card.
 - When user clicks 'delete' button, that player is removed from firebase and the 'team view' updates.
+
+## Contributors
+Austin Parker [see GitHub](https://www.github.com/austincparker)
