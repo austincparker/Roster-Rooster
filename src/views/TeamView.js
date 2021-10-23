@@ -16,7 +16,7 @@ export default function TeamView({
   return (
     <Container className=" container text-center">
       <h1>Team</h1>
-      <div>
+      <div className="d-flex flex-wrap justify-content-center">
         {players.map((player) => (
           <Team
             key={player.firebaseKey}
