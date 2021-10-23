@@ -57,7 +57,6 @@ export default function PlayerForm({
     } else {
       createPlayer({ ...formInput, uid }, uid).then((players) => {
         setPlayers(players);
-        console.warn(players);
       });
       resetForm();
     }
