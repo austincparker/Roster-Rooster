@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
 import { createPlayer, updatePlayer } from '../api/data/teamData';
 
 const initialState = {
@@ -24,7 +23,6 @@ export default function PlayerForm({
   obj, setPlayers, setEditItem, uid,
 }) {
   const [formInput, setFormInput] = useState(initialState);
-  const history = useHistory();
 
   useEffect(() => {
     if (obj.firebaseKey) {
@@ -55,15 +53,13 @@ export default function PlayerForm({
     if (obj.firebaseKey) {
       updatePlayer(formInput.firebaseKey, formInput).then((players) => {
         setPlayers(players);
-        resetForm();
-        history.push('/team');
       });
     } else {
-      createPlayer({ ...formInput }, uid).then((players) => {
+      createPlayer({ ...formInput, uid }, uid).then((players) => {
         setPlayers(players);
+        console.warn(players);
       });
       resetForm();
-      history.push('/team');
     }
   };
 
