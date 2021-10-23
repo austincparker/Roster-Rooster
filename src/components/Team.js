@@ -30,8 +30,8 @@ export default function Team({
     }
   };
   return (
-    <Container className="d-flex flex-wrap justify-content-center">
-      <PlayerCard className="d-flex justify-content-center card">
+    <Container>
+      <PlayerCard className="mx-2">
         <img
           src={player.imageUrl}
           className="card-img-top prof-pic"
