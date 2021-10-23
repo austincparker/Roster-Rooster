@@ -38,6 +38,7 @@ function Initialize() {
             setPlayers={setPlayers}
             setEditItem={setEditItem}
             obj={editItem}
+            uid={user.uid}
           />
         </>
       ) : (

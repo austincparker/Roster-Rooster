@@ -7,6 +7,7 @@ const initialState = {
   name: '',
   imageUrl: '',
   position: '',
+  uid: '',
 };
 
 const Container = styled.div`
@@ -14,9 +15,10 @@ const Container = styled.div`
 `;
 
 // eslint-disable-next-line react/prop-types
-export default function New({ setPlayers, obj, setEditItem }) {
+export default function New({
+  setPlayers, obj, setEditItem, uid,
+}) {
   const [formInput, setFormInput] = useState(initialState);
-
   return (
     <Container className="text-center container">
       <h1>Add a Player</h1>
@@ -26,6 +28,7 @@ export default function New({ setPlayers, obj, setEditItem }) {
         formInput={formInput}
         obj={obj}
         setEditItem={setEditItem}
+        uid={uid}
       />
     </Container>
   );
@@ -36,7 +39,9 @@ New.propTypes = {
     name: PropTypes.string,
     imageUrl: PropTypes.string,
     position: PropTypes.string,
+    uid: PropTypes.string,
   }).isRequired,
+  uid: PropTypes.string.isRequired,
   setEditItem: PropTypes.func.isRequired,
   setPlayers: PropTypes.func.isRequired,
 };

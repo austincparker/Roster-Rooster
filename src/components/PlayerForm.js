@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
 import { createPlayer, updatePlayer } from '../api/data/teamData';
 
 const initialState = {
   name: '',
   imageUrl: '',
   position: '',
+  uid: '',
 };
 
 const Container = styled.div``;
@@ -19,9 +19,10 @@ const FormStyle = styled.div`
   }
 `;
 
-export default function PlayerForm({ obj, setPlayers, setEditItem }) {
+export default function PlayerForm({
+  obj, setPlayers, setEditItem, uid,
+}) {
   const [formInput, setFormInput] = useState(initialState);
-  const history = useHistory();
 
   useEffect(() => {
     if (obj.firebaseKey) {
@@ -30,6 +31,7 @@ export default function PlayerForm({ obj, setPlayers, setEditItem }) {
         imageUrl: obj.imageUrl,
         position: obj.position,
         firebaseKey: obj.firebaseKey,
+        uid,
       });
     }
   }, [obj]);
@@ -51,15 +53,13 @@ export default function PlayerForm({ obj, setPlayers, setEditItem }) {
     if (obj.firebaseKey) {
       updatePlayer(formInput.firebaseKey, formInput).then((players) => {
         setPlayers(players);
-        resetForm();
-        history.push('/team');
       });
     } else {
-      createPlayer({ ...formInput }).then((players) => {
+      createPlayer({ ...formInput, uid }, uid).then((players) => {
         setPlayers(players);
+        console.warn(players);
       });
       resetForm();
-      history.push('/team');
     }
   };
 
@@ -123,7 +123,9 @@ PlayerForm.propTypes = {
     imageUrl: PropTypes.string,
     position: PropTypes.string,
     firebaseKey: PropTypes.string,
+    uid: PropTypes.string,
   }).isRequired,
+  uid: PropTypes.string.isRequired,
   setPlayers: PropTypes.func.isRequired,
   setEditItem: PropTypes.func.isRequired,
 };
