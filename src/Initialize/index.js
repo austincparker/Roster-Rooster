@@ -32,6 +32,12 @@ function Initialize() {
     <div className="App">
       {user ? (
         <>
+          <img
+            alt="roster-rooster"
+            src="https://github.com/austincparker/acp-portfolio/blob/main/public/imgs/project-logos/Roster%20Rooster.png?raw=true"
+            width="200px"
+            className="rr-logo"
+          />
           <Navigation />
           <Routes
             players={players}
@@ -42,7 +48,15 @@ function Initialize() {
           />
         </>
       ) : (
-        <SignIn user={user} />
+        <>
+          <img
+            alt="roster-rooster"
+            src="https://github.com/austincparker/acp-portfolio/blob/main/public/imgs/project-logos/Roster%20Rooster.png?raw=true"
+            width="200px"
+            className="rr-logo"
+          />
+          <SignIn user={user} />
+        </>
       )}
     </div>
   );

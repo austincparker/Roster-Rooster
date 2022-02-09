@@ -6,9 +6,10 @@ import { Button } from 'reactstrap';
 import { deletePlayer } from '../api/data/teamData';
 
 const PlayerCard = styled.div`
-  background-color: teal;
+  background-color: #133340;
   color: white;
   margin-bottom: 20px;
+  border-radius: 5px;
   img {
     width: 300px;
     margin: auto;
